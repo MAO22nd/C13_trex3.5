@@ -69,18 +69,18 @@ function draw() {
   
   //gerar as nuvens
   spawnClouds();
-  spawObstacles();
+  spawnObstacles();
   
   drawSprites();
   
 }
-functiom spawObstacles (){
-  if (frameCont)% === 0){
-    var obstacle = creatSprite (400,165,10,40);
-    obstacle.velocytyX=-6
+function spawnObstacles (){
+  if (frameCount)% === 0){
+    var obstacle = createSprite (400,165,10,40);
+    obstacle.velocityX=-6
     
-  var rand = Math.round(randow(1,6)):
-  suwitch(rand) {
+  var rand = Math.round(random(1,6)):
+  switch(rand) {
     case 1 : obstacle.addImage(obstacle1);
                 break;
     
@@ -100,7 +100,7 @@ functiom spawObstacles (){
                 break;
     
     
-    case 6 : obstacle.addImage(obstacle5);
+    case 6 : obstacle.addImage(obstacle6);
                 break;
   
     default : break;
