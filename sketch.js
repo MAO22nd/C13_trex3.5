@@ -3,6 +3,13 @@ var ground, invisibleGround, groundImage;
 
 var cloud, cloudsGroup, cloudImage;
 
+var obstaclesGroup,obstacle1,obstacle2,obstacle3,obstacle4,obstacle5,obstacle6;
+
+
+
+
+
+
 
 
 var newImage;
@@ -14,7 +21,12 @@ function preload(){
   groundImage = loadImage("ground2.png");
   
   cloudImage = loadImage("cloud.png");
- 
+  obstacle1 = loadimage("obstacle1.png")
+ obstacle2 = loadimage("obstacle2.png")
+  obstacle3 = loadimage("obstacle3.png")
+  obstacle4 = loadimage("obstacle4.png")
+  obstacle5 = loadimage("obstacle5.png")
+  obstacle6 = loadimage("obstacle6.png")
 }
 
 function setup() {
@@ -25,6 +37,7 @@ function setup() {
   // trex.addAnimation("collided",trex_collided)
   trex.scale = 0.5;
   
+  
   ground = createSprite(200,180,400,20);
   ground.addImage("ground",groundImage);
   ground.x = ground.width /2;
@@ -34,13 +47,14 @@ function setup() {
   invisibleGround.visible = false;
   
   console.log("Hello"+ 5)
+  score = 0
   
 }
 
 function draw() {
   background(180);
-  
-  
+  text ("pontos:" + score ,500,50);
+   score = score + Math.round(frameCount/60)
   if(keyDown("space")&& trex.y >= 100) {
     trex.velocityY = -10;
   }
@@ -55,10 +69,46 @@ function draw() {
   
   //gerar as nuvens
   spawnClouds();
+  spawObstacles();
   
   drawSprites();
+  
 }
-
+functiom spawObstacles (){
+  if (frameCont)% === 0){
+    var obstacle = creatSprite (400,165,10,40);
+    obstacle.velocytyX=-6
+    
+  var rand = Math.round(randow(1,6)):
+  suwitch(rand) {
+    case 1 : obstacle.addImage(obstacle1);
+                break;
+    
+    
+    case 2 : obstacle.addImage(obstacle2);
+                break;
+    
+    
+    case 3 : obstacle.addImage(obstacle3);
+                break;
+    
+    
+    case 4 : obstacle.addImage(obstacle4);
+    
+                break;
+    case 5 : obstacle.addImage(obstacle5);
+                break;
+    
+    
+    case 6 : obstacle.addImage(obstacle5);
+                break;
+  
+    default : break;
+  }
+    obstacle.scale = 0.5;
+    obstacle.lifetime = 300;
+  }
+  }
 function spawnClouds() {
   //escreva o código aqui para gerar as nuvens
   if (frameCount % 60 === 0) {
@@ -70,7 +120,7 @@ function spawnClouds() {
     
     
     //atribua tempo de vida à variável
-    cloud.lifetime = 50
+    cloud.lifetime = 200;
     
     //ajuste a profundidade
     cloud.depth = trex.depth
